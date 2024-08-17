@@ -1,0 +1,30 @@
+package ExtentReports.ExtentReportProj;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+
+public class ExtentReportDemo {
+	
+	@BeforeTest
+	public void config() {
+		//ExtentReports, ExtentSparkReporter - classes
+		String path = System.getProperty("user.dir")+"\\reports\\index\\html";
+		ExtentSparkReporter e = new ExtentSparkReporter(path);
+		
+		e.config().setReportName("Web Automation Results by Harshi");
+		e.config().setDocumentTitle("Test Results");
+	}
+	
+	@Test
+	public void initialDemo() {
+		WebDriver d = new ChromeDriver();
+		d.get("https://rahulshettyacademy.com");
+		System.out.println(d.getTitle());
+	}
+
+}
